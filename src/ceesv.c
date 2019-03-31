@@ -9,17 +9,17 @@ int main()
     char *token;
     const char delim[2] = ",";
 
-	// Open the file
+    // Open the file
     fp = fopen("./testing.csv", "r");
 
-	// Read each line in file
+    // Read each line in file
     while(fgets(buff, MAX, (FILE*)fp))
     {
         // Print line
         printf("Line:\n\t%s", buff);
         token = strtok(buff, delim);
 
-		printf("Tokens:\n\t");
+        printf("Tokens:\n\t");
         printf("%s ", token);
         while ((token=strtok(NULL, delim)) != NULL)
             printf("%s ", token);
