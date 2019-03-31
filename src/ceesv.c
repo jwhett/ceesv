@@ -2,9 +2,6 @@
 #include <string.h>
 #define MAX 255
 
-
-int csvparse(char buf[]);
-
 int main()
 {
     FILE *fp;
