@@ -1,2 +1,2 @@
-ceesv: ceesv.c
-	cc ceesv.c -o ceesv
+ceesv: src/ceesv.c
+	cc src/ceesv.c -o ceesv
