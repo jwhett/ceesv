@@ -8,10 +8,7 @@ int main()
     char buff[MAX];
 
     fp = fopen("./testing.csv", "r");
-    fgets(buff, MAX, (FILE*)fp);
-    printf("Line: %s", buff);
-
-    fgets(buff, MAX, (FILE*)fp);
-    printf("Line: %s", buff);
+    while(fgets(buff, MAX, (FILE*)fp))
+        printf("Line: %s", buff);
 
 }
