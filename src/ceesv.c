@@ -20,10 +20,9 @@ int main()
         token = strtok(buff, delim);
 
 		printf("Tokens:\n\t");
-        while (token != NULL) {
+        printf("%s ", token);
+        while ((token=strtok(NULL, delim)) != NULL)
             printf("%s ", token);
-            token = strtok(NULL, delim);
-        }
         printf("\n");
     }
 }
