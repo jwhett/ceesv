@@ -2,19 +2,23 @@
 #include <string.h>
 #define MAX 255
 
-void printcsv(FILE *f);
+char * parsecsv(FILE *f, char **parsed);
 
 int main()
 {
     FILE *fp;
+    char **tobeparsed;
+    char *parsed;
 
     // Open the file
     fp = fopen("./testing.csv", "r");
-	printcsv(fp);
+	parsed = parsecsv(fp, tobeparsed);
+
 }
 
-void printcsv(FILE *f)
+char * parsecsv(FILE *f, char **parsed)
 {
+    int i=0;
     char buff[MAX];
     char *token;
     const char delim[2] = ",";
@@ -23,13 +27,10 @@ void printcsv(FILE *f)
     while(fgets(buff, MAX, (FILE*)f))
     {
         // Print line
-        printf("Line:\n\t%s", buff);
-        token = strtok(buff, delim);
+        parsed[i] = strtok(buff, delim);
 
-        printf("Tokens:\n\t");
-        printf("%s ", token);
         while ((token=strtok(NULL, delim)) != NULL)
-            printf("%s ", token);
-        printf("\n");
+            parsed[++i]=token;
     }
+    return *parsed;
 }
