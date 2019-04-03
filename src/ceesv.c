@@ -47,8 +47,11 @@ void parseandprint(FILE *f, char *filter)
             printf("%s ", token); // print if included in whitelist
 
         for ( i=1 ; (token=strtok(NULL, delim)) != NULL; i++ ){
-            if (filter[i])
+            if (filter[i]){
+                if (strchr(token, '\n'))
+                    token = strtok(token, "\n"); // last element, remove the newline
                 printf("%s ", token); // print if included in whitelist
+            }
         }
         printf("\n"); // end of line
     }
@@ -75,6 +78,8 @@ void findneeded(FILE *f, char *whatsneeded, int argc, char **argv)
     i++;
 
     while ((token=strtok(NULL, delim)) != NULL){
+        if (strchr(token, '\n'))
+            token = strtok(token, "\n"); // last header, remove the newline
         if (isincluded(token, argc, argv))
             whatsneeded[i]=1;
         i++;
